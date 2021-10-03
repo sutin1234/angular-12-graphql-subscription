@@ -1,0 +1,9 @@
+POST http://localhost:4000/api/profile
+
+Content-Type: application/json
+
+{
+  "firstName": "Test Rest Client",
+  "lastName": "Test Rest",
+  "position": "Rest Client"
+}
