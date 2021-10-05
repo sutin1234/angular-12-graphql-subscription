@@ -85,13 +85,13 @@ export class AppComponent implements OnInit {
     this.profilesQuery.subscribeToMore({
       document: PROFILE_SUBSCRIBTION,
       updateQuery: (prev, { subscriptionData }) => {
-        console.log('updateQuery ', prev, { subscriptionData });
+        console.log('updateQuery ', { subscriptionData });
         if (!subscriptionData.data) {
           return prev;
         }
         const newProfile = subscriptionData.data.profiles;
         return {
-          profiles: [...newProfile, ...prev.profiles]
+          profiles: [...newProfile],
         };
       }
     });
@@ -103,7 +103,8 @@ export class AppComponent implements OnInit {
         mutation: PROFILE_POST,
         variables: this.myForm.value
       }).subscribe(({ data }) => {
-        console.log('got data', data);
+        console.log('Insert New Profile OK!', data);
+        this.myForm.reset();
       }, (error) => {
         console.log('there was an error sending the query', error);
       });

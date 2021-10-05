@@ -4,21 +4,32 @@ import { ApolloClientOptions, InMemoryCache, split } from '@apollo/client/core';
 import { HttpLink } from 'apollo-angular/http';
 import { WebSocketLink } from '@apollo/client/link/ws';
 import { getMainDefinition } from '@apollo/client/utilities';
+import { HttpHeaders } from '@angular/common/http';
 
 
-const uri = 'http://localhost:8080/v1/graphql';
+const uri = 'https://witty-elk-53.hasura.app/v1/graphql';
+const getHeaders = () => {
+  const headers: any = {};
+  headers['x-hasura-admin-secret'] = 'FxUv79aADITeVuz2J2z5mcin9fGwbn8kZ4rFwWu4fc52dJAR0kfzpXz0BLo4kvId';
+  headers['content-type'] = 'application/json';
+  return headers;
+};
 export function createApollo(httpLink: HttpLink): ApolloClientOptions<any> {
 
 
   const http = httpLink.create({
-    uri
+    uri: 'https://witty-elk-53.hasura.app/v1/graphql',
+    headers: new HttpHeaders().append('x-hasura-admin-secret', 'FxUv79aADITeVuz2J2z5mcin9fGwbn8kZ4rFwWu4fc52dJAR0kfzpXz0BLo4kvId')
   });
 
 
   const ws = new WebSocketLink({
-    uri: `ws://localhost:4000/graphql`,
+    uri: `wss://witty-elk-53.hasura.app/v1/graphql`,
     options: {
       reconnect: true,
+      connectionParams: () => {
+        return { headers: getHeaders() };
+      },
     },
   });
 
