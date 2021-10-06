@@ -4,7 +4,7 @@ const express = require("express");
 const { execute, subscribe } = require("graphql");
 const { ApolloServer, gql } = require("apollo-server-express");
 const { PubSub } = require("graphql-subscriptions");
-const { SubscriptionServer } = require("subscriptions-transport-ws");
+const {SubscriptionServer} = require("subscriptions-transport-ws");
 const {makeExecutableSchema} = require("@graphql-tools/schema");
 const bodyParser = require("body-parser");
 

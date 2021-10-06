@@ -9,15 +9,15 @@ import {environment as env} from '../environments/environment';
 
 const getHeaders = () => {
   const headers: any = {};
-  headers['x-hasura-admin-secret'] =
-    'FxUv79aADITeVuz2J2z5mcin9fGwbn8kZ4rFwWu4fc52dJAR0kfzpXz0BLo4kvId';
+  headers[env.HASURA.HASURA_ADMIN_SECRET_KEY] =
+    env.HASURA.HASURA_ADMIN_SECRET_VALUE;
   headers['content-type'] = 'application/json';
   return headers;
 };
 
 export function createApollo(httpLink: HttpLink): ApolloClientOptions<any> {
   const http = httpLink.create({
-    uri: 'https://witty-elk-53.hasura.app/v1/graphql',
+    uri: env.HASURA.HASURA_HTTP_LINK,
     headers: new HttpHeaders().append(
       env.HASURA.HASURA_ADMIN_SECRET_KEY,
       env.HASURA.HASURA_ADMIN_SECRET_VALUE
@@ -25,11 +25,11 @@ export function createApollo(httpLink: HttpLink): ApolloClientOptions<any> {
   });
 
   const ws = new WebSocketLink({
-    uri: `wss://witty-elk-53.hasura.app/v1/graphql`,
+    uri: env.HASURA.HASURA_WS_LINK,
     options: {
       reconnect: true,
       connectionParams: () => {
-        return { headers: getHeaders() };
+        return {headers: getHeaders()};
       },
     },
   });

@@ -5,6 +5,8 @@
 export const environment = {
   production: false,
   HASURA: {
+    HASURA_HTTP_LINK: 'https://witty-elk-53.hasura.app/v1/graphql',
+    HASURA_WS_LINK: 'wss://witty-elk-53.hasura.app/v1/graphql',
     HASURA_ADMIN_SECRET_KEY: 'x-hasura-admin-secret',
     HASURA_ADMIN_SECRET_VALUE:
       'FxUv79aADITeVuz2J2z5mcin9fGwbn8kZ4rFwWu4fc52dJAR0kfzpXz0BLo4kvId',
