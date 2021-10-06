@@ -5,9 +5,8 @@ const { execute, subscribe } = require("graphql");
 const { ApolloServer, gql } = require("apollo-server-express");
 const { PubSub } = require("graphql-subscriptions");
 const { SubscriptionServer } = require("subscriptions-transport-ws");
-const { makeExecutableSchema } = require("@graphql-tools/schema");
-const bodyParser = require('body-parser');
-
+const {makeExecutableSchema} = require("@graphql-tools/schema");
+const bodyParser = require("body-parser");
 
 (async () => {
   const PORT = 4000;
@@ -15,20 +14,18 @@ const bodyParser = require('body-parser');
   const app = express();
   const httpServer = createServer(app);
 
-  let profiles = []
+  let profiles = [];
 
-  app.use(bodyParser.json())
-  app.post('/api/profile', (req, res) => {
+  app.use(bodyParser.json());
+  app.post("/api/profile", (req, res) => {
     const body = {
       firstName: "Test Rest Client",
       lastName: " test Rest",
-      position: " Rest Client"
-    }
+      position: " Rest Client",
+    };
     addProfile(body);
     res.json(profiles);
-
-  })
-
+  });
 
   // Schema definition
   const typeDefs = gql`
