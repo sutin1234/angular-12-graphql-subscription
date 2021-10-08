@@ -1,36 +1,37 @@
 <section class="px-4 py-4 bg-gray-100">
-  <h1 class="font-bold text-red-500 text-3xl mb-6">{{ title }}</h1>
+  <h1 class="mb-6 text-3xl font-bold text-red-500">{{ title }}</h1>
+  <p class="mb-6 text-3xl font-bold text-red-500">{{ title }} app is running!</p>
   <div class="grid grid-cols-3 gap-3" [formGroup]="myForm">
     <div class="col-span-3 sm:col-span-2">
       <label for="company-website" class="block font-medium text-gray-700">
         FirstName
       </label>
-      <div class="mt-1 flex rounded-md shadow-sm">
+      <div class="flex mt-1 rounded-md shadow-sm">
         <input formControlName="firstName" type="text"
-          class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md  border-gray-300 h-10 p-4" />
+          class="flex-1 block w-full h-10 p-4 border-gray-300 rounded-none focus:ring-indigo-500 focus:border-indigo-500 rounded-r-md" />
       </div>
     </div>
     <div class="col-span-3 sm:col-span-2">
       <label for="company-website" class="block font-medium text-gray-700">
         Lastname
       </label>
-      <div class="mt-1 flex rounded-md shadow-sm">
+      <div class="flex mt-1 rounded-md shadow-sm">
         <input formControlName="lastName" type="text"
-          class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md  border-gray-300 h-10 p-4" />
+          class="flex-1 block w-full h-10 p-4 border-gray-300 rounded-none focus:ring-indigo-500 focus:border-indigo-500 rounded-r-md" />
       </div>
     </div>
     <div class="col-span-3 sm:col-span-2">
       <label for="company-website" class="block font-medium text-gray-700">
         Position
       </label>
-      <div class="mt-1 flex rounded-md shadow-sm">
+      <div class="flex mt-1 rounded-md shadow-sm">
         <input formControlName="position" type="text"
-          class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md  border-gray-300 h-10 p-4" />
+          class="flex-1 block w-full h-10 p-4 border-gray-300 rounded-none focus:ring-indigo-500 focus:border-indigo-500 rounded-r-md" />
       </div>
     </div>
     <div class="col-span-3 sm:col-span-2">
       <button [disabled]="myForm.invalid" [ngClass]="{'opacity-50 cursor-not-allowed' : myForm.invalid}"
-        class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+        class="inline-flex justify-center px-4 py-2 text-sm font-medium text-white bg-indigo-600 border border-transparent rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
         (click)="formSubmit()">Submit</button>
     </div>
   </div>
@@ -41,11 +42,11 @@
     Error :(
   </div>
   <div *ngIf="profiles" class="h-full overflow-scroll border">
-    <div *ngFor="let p of profiles" class="bg-white my-2 rounded p-4">
+    <div *ngFor="let p of profiles" class="p-4 my-2 bg-white rounded">
       <div class="text-green-600">{{ p?.firstName }}: {{ p?.lastName }}</div>
       <b class="text-blue-700">{{p?.position}}</b>
       <div>
-        <button class="text-sm bg-red-500 text-white px-2 rounded-md" (click)="onDelete(p.id)">delete</button>
+        <button class="px-2 text-sm text-white bg-red-500 rounded-md" (click)="onDelete(p.id)">delete</button>
       </div>
     </div>
   </div>
