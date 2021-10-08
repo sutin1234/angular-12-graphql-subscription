@@ -1,7 +1,9 @@
 import { TestBed } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { By } from '@angular/platform-browser';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
+
 
 describe('AppComponent', () => {
   beforeEach(async () => {
@@ -28,4 +30,13 @@ describe('AppComponent', () => {
     const app = fixture.componentInstance;
     expect(app.title).toContain('Angular 12 Apollo graphQL');
   });
+
+  it(`should have FirstName`, () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.componentInstance;
+    const firstName = fixture.debugElement.query(By.css('.text-gray-700')).nativeElement;
+    expect(firstName.textContent).toContain('FirstName');
+  });
+
+
 });
