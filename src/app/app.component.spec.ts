@@ -38,5 +38,12 @@ describe('AppComponent', () => {
     expect(firstName.textContent).toContain('FirstName');
   });
 
+  it(`should have LastName`, () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.componentInstance;
+    const lastName = fixture.debugElement.query(By.css('#lastName')).nativeElement;
+    expect(lastName.textContent.trim()).toContain("Lastname");
+  });
+
 
 });
